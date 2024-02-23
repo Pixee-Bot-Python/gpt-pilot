@@ -336,8 +336,8 @@ def stream_gpt_completion(data, req_type, project):
         endpoint_url,
         headers=headers,
         json=data,
-        stream=True
-    )
+        stream=True, 
+    timeout=60)
 
     if response.status_code != 200:
         project.dot_pilot_gpt.log_chat_completion(endpoint, model, req_type, data['messages'], response.text)
