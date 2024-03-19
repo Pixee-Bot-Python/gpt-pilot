@@ -47,8 +47,7 @@ def run_command(command, root_path, q_stdout, q_stderr) -> subprocess.Popen:
     if platform.system() == 'Windows':  # Check the operating system
         process = subprocess.Popen(
             command,
-            shell=True,
-            stdout=subprocess.PIPE,
+            shell=False, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
             cwd=root_path
@@ -56,8 +55,7 @@ def run_command(command, root_path, q_stdout, q_stderr) -> subprocess.Popen:
     else:
         process = subprocess.Popen(
             command,
-            shell=True,
-            stdout=subprocess.PIPE,
+            shell=False, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
             preexec_fn=os.setsid,  # Use os.setsid only for Unix-like systems
